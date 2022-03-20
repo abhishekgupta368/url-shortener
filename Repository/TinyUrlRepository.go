@@ -31,8 +31,8 @@ func (r *Repository) Save(urlModel model.UrlModel, hash string) {
 	} else {
 		id := uuid.New()
 		r.Db.Create(&model.TinyUrlData{
-			Hash: hash,
-			Url:  id.String(),
+			Hash: id.String(),
+			Url:  urlModel.Url,
 		})
 		log.Println("Hash already exists, creating other hash")
 	}
